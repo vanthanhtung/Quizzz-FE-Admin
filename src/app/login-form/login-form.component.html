@@ -1,5 +1,6 @@
 <div class="container">
     <div class="card card-container">
+      <h2>Login</h2>
         <form *ngIf="!isLoggedIn" name="form" 
         (ngSubmit)="f.form.valid && onSubmit()"
         #f="ngForm" novalidate>
@@ -19,7 +20,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <button class="btn btn-primary btn-block">
+                <button class="btn">
                   Login
                 </button>
               </div>
@@ -33,8 +34,8 @@
                 </div>
               </div>
         </form>
-        <div class="alert alert-success" *ngIf="isLoggedIn">
+        <!-- <div class="alert alert-success" *ngIf="isLoggedIn">
             Logged in as {{ roles }}.
-          </div>
+          </div> -->
     </div>
 </div>

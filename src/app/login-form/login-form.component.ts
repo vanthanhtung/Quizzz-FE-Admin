@@ -25,10 +25,15 @@ export class LoginFormComponent implements OnInit {
     if(this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
+      if(this.roles.includes('ROLE_ADMIN')) {
+        this.router.navigateByUrl('/dashboard')
+      }
     }
+    
   }
 
   onSubmit(): void {
+    this.router.navigateByUrl('/admin')
     this.authService.login(this.form).subscribe(
       data => {
         this.tokenStorage.saveToken(data.accessToken);
@@ -38,7 +43,7 @@ export class LoginFormComponent implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
         if(this.roles.includes('ROLE_ADMIN')){
-          this.router.navigateByUrl('/admin')
+          this.router.navigateByUrl('/dashboard')
         }else {
           this.router.navigateByUrl('')
         }

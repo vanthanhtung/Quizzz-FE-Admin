@@ -69,7 +69,7 @@ export class DashboardComponent implements OnInit{
                 fontColor: "#9f9f9f",
                 beginAtZero: false,
                 maxTicksLimit: 5,
-                //padding: 20
+                // padding: 20
               },
               gridLines: {
                 drawBorder: false,
