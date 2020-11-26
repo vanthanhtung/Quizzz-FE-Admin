@@ -20,7 +20,6 @@ export class TypographyComponent implements OnInit{
     this.getData();
  }
   getData(): void {
-   debugger
     this.service.getAll()
       .subscribe(
        data => {

@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const baseUrl = 'http://localhost:8080/quizzes';
+const baseUrl = 'http://localhost:8080/categories';
 
 @Injectable({
     providedIn:'any'
 })
 
-export class QuizService {
+export class CategoryService {
 
     constructor(public http: HttpClient) { }
 
