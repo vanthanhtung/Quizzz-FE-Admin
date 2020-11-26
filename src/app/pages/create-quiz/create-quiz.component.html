@@ -1,1 +1,30 @@
-<p>create-quiz works!</p>
+<form action="action_page.php">
+  <div class="container">
+    <h1>Create new Quiz</h1>
+    <p>Please fill in this form to create a new quiz.</p>
+    <hr>
+
+    <label for="cars">Choose category  </label>
+<select id="cars" name="cars">
+  <option value="volvo">Math</option>
+  <option value="saab">English</option>
+  <option value="fiat">Love</option>
+  <option value="audi">Car</option>
+</select>
+<br><br>
+  <label for="psw"><b>Content</b></label>
+  <textarea name="content" style="width:400px; height:200px;" [(ngModel)]="quiz.content">
+  </textarea>
+  <br><br>
+    <label for="type"><b>type</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" id="psw" required [(ngModel)]="quiz.type">
+  <br><br>
+    <label for="psw-repeat"><b>level</b></label>
+    <input type="text" placeholder="Enter Email" name="email" id="email" required [(ngModel)]="quiz.level">
+    <br><br>
+    <label for="psw-repeat"><b>score</b></label>
+    <input type="text" placeholder="Enter Email" name="email" id="email" required [(ngModel)]="quiz.score">
+    <hr>
+    <td><button type="button" class="btn btn-primary" (click)=createNew()>Submit</button></td>
+  </div>
+</form>
