@@ -1,3 +1,4 @@
+<button type="button" class="btn btn-danger" (click)="add()" [routerLink]="['/createquiz']">Add new Quiz</button>
 <div class="row">
   <div class="col-md-12">
     <div class="card">
@@ -8,6 +9,9 @@
         <div class="table-responsive">
           <table class="table">
             <thead class=" text-primary">
+              <th>
+                Category
+              </th>
               <th>
                 Content
               </th>
@@ -23,15 +27,15 @@
               <th>
                 Score
               </th>
-              <th>
-                Is_Active
-              </th>
               <th class="text-right">
                 Action
               </th>
             </thead>
             <tbody>
               <tr *ngFor='let quiz of quizes'>
+                <td>
+                  {{quiz.category.name}}
+                </td>
                 <td>
                   {{quiz.content}}
                 </td>
@@ -46,9 +50,6 @@
                 </td>
                 <td>
                   {{quiz.score}}
-                </td>
-                <td>
-                  {{quiz.is_active}}
                 </td>
                 <td class="text-right">
                   <button type="button" class="btn btn-primary" [routerLink]="['/table']">Edit</button>
