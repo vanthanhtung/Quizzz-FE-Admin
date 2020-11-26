@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {QuizService} from '../services/quiz.service'
 
 @Component({
     selector: 'typography-cmp',
@@ -6,4 +7,39 @@ import { Component } from '@angular/core';
     templateUrl: 'typography.component.html'
 })
 
-export class TypographyComponent{}
+export class TypographyComponent implements OnInit{
+
+  constructor(
+    public service: QuizService
+  ){}
+
+  quizes: any=[];
+  currentQuiz = null;
+
+  ngOnInit(): void {
+    this.getData();
+ }
+  getData(): void {
+   debugger
+    this.service.getAll()
+      .subscribe(
+       data => {
+          this.quizes = data;
+       },
+       error => {
+         console.log(error)
+       }
+     );
+  }
+
+  delete(id): void{
+    this.service.delete(id).subscribe(
+      (response) => {
+        this.getData();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+}
