@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { TokenStorageService } from 'app/_services/token-storage.service';
 import Chart from 'chart.js';
 
 
@@ -16,7 +18,21 @@ export class DashboardComponent implements OnInit{
   public chartEmail;
   public chartHours;
 
+  private isLoggedIn = false;
+
+    constructor(private tokenStorage: TokenStorageService, private router: Router) {
+
+
+    }
+
     ngOnInit(){
+
+      this.isLoggedIn = !!this.tokenStorage.getToken();
+      if(!this.isLoggedIn) {
+        this.router.navigateByUrl("/login");
+      }
+
+
       this.chartColor = "#FFFFFF";
 
       this.canvas = document.getElementById("chartHours");
@@ -206,4 +222,6 @@ export class DashboardComponent implements OnInit{
         options: chartOptions
       });
     }
+
+    
 }
