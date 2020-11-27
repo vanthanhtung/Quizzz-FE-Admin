@@ -13,6 +13,7 @@ import { AppRoutes } from './app.routing';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
     NavbarModule,
     ToastrModule.forRoot(),
     FooterModule,
-    FixedPluginModule
+    FixedPluginModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
