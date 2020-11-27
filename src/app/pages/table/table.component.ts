@@ -1,37 +1,52 @@
-import { Component, OnInit } from '@angular/core';
-import {UserService} from '../services/user.service'
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { UserService } from "../services/user.service";
 
-declare interface TableData {
-}
+declare interface TableData {}
 
 @Component({
-    selector: 'table-cmp',
-    moduleId: module.id,
-    templateUrl: 'table.component.html'
+  selector: "table-cmp",
+  moduleId: module.id,
+  templateUrl: "table.component.html",
 })
+export class TableComponent implements OnInit {
 
-export class TableComponent implements OnInit{
+  constructor(private route: ActivatedRoute, public service: UserService) {
+    
+  }
 
-    constructor(
-      public service: UserService
-    ){}
+  message='';
+  users: any = [];
+  currentUser = null;
+  isChangedOk = false;
 
-    users: any=[];
-    currentUser = null;
+  ngOnInit(): void {
+    this.getData();
+  }
+  getData(): void {
+    this.service.getAll().subscribe(
+      (data) => {
+        this.users = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 
-    ngOnInit(): void {
+  changeRole(id): void {
+    this.service.changRole(id, this.currentUser).subscribe(
+      (data) => {
+        this.currentUser = data;
         this.getData();
-    }
-    getData(): void {
-      debugger
-      this.service.getAll()
-        .subscribe(
-          data => {
-            this.users = data;
-          },
-          error => {
-            console.log(error)
-          }
-        );
-    }
+        console.log(data);
+        this.isChangedOk = true;
+        this.message = 'Successful'
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
 }

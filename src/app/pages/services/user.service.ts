@@ -31,4 +31,8 @@ export class UserService {
     update(id: any, data): Observable<any> {
       return this.http.put(`${baseUrl}/${id}`, data);
     }
+
+    changRole(id, data): Observable<any>{
+      return this.http.put(`${baseUrl}/changeRole/${id}`, data);
+    }
 }

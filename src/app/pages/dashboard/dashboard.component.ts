@@ -215,13 +215,10 @@ export class DashboardComponent implements OnInit{
         }
       };
 
-      var lineChart = new Chart(speedCanvas, {
-        type: 'line',
-        hover: false,
-        data: speedData,
-        options: chartOptions
-      });
     }
 
-    
+    signOut(): any{
+      this.tokenStorage.signOut();
+      this.router.navigateByUrl("")
+    }
 }
