@@ -33,19 +33,20 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.router.navigateByUrl('/admin')
+    // this.router.navigateByUrl('/admin')
     this.authService.login(this.form).subscribe(
       data => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
-
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
         if(this.roles.includes('ROLE_ADMIN')){
+          this.isLoginFailed = false;
+          this.isLoggedIn = true;
           this.router.navigateByUrl('/dashboard')
         }else {
-          this.router.navigateByUrl('')
+          this.isLoginFailed = true;
+          this.errorMessage = 'Unauthorized login';
+           this.tokenStorage.signOut();
         }
       },
       err => {
