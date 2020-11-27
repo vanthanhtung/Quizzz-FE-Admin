@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const baseUrl = 'http://localhost:8080/categories';
+const baseUrl = 'http://localhost:5432/categories';
 
 @Injectable({
     providedIn:'any'

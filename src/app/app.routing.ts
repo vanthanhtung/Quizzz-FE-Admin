@@ -1,13 +1,16 @@
 import { Routes } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { CreateQuizComponent } from './pages/create-quiz/create-quiz.component';
 
 export const AppRoutes: Routes = [
   {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
-  }, {
+  },
+
+   {
     path: '',
     component: AdminLayoutComponent,
     children: [
