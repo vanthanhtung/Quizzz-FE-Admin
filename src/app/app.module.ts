@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateQuizComponent } from './pages/create-quiz/create-quiz.component';
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import { CreateQuizComponent } from './pages/create-quiz/create-quiz.component';
     HttpClientModule,
     NgbModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
