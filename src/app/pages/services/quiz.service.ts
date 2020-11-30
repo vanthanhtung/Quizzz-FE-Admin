@@ -31,9 +31,4 @@ export class QuizService {
     update(id: any, data): Observable<any> {
       return this.http.put(`${baseUrl}/${id}`, data);
     }
-
-    getAllByCategoryName(name: string): Observable<any> {
-      debugger
-      return this.http.get(`${baseUrl}/categories/${name}`);
-    }
 }

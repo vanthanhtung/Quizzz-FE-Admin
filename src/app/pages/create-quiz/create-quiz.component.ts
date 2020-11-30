@@ -5,18 +5,21 @@ import { QuizService } from '../services/quiz.service';
   selector: 'app-create-quiz',
   templateUrl: './create-quiz.component.html',
 })
-export class CreateQuizComponent implements OnInit {
-
+export class  CreateQuizComponent implements OnInit {
   quizes: any=[];
+
+  categoryId: 0;
 
    quiz= {
     content:"",
     type: "",
     level:"",
     score: 0,
-    is_active: true
+    is_active: true,
+    category: {
+      id:null
+    }
   }
-
   constructor(
     public service: QuizService,
     public categoryService: CategoryService
@@ -38,12 +41,10 @@ export class CreateQuizComponent implements OnInit {
      );
   }
 
-  currentQuiz = null;
-
   categories: any = [];
 
   getAllCategory(): void {
-    debugger
+
     this.categoryService.getAll()
       .subscribe(
         data => {
@@ -57,18 +58,9 @@ export class CreateQuizComponent implements OnInit {
   }
 
   createNew(): void{
-    const data = {
-      content: this.quiz.content,
-      type: this.quiz.type,
-      level: this.quiz.level,
-      score: this.quiz.score,
-      is_active: true
-    };
-
-    this.service.create(data).subscribe(
+    this.service.create(this.quiz).subscribe(
       (response) => {
         console.log(response);
-
       },
       (error) => {
         console.log(error);

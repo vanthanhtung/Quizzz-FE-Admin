@@ -31,14 +31,15 @@ export class TypographyComponent implements OnInit{
      );
   }
 
-  delete(id): void{
-    this.service.delete(id).subscribe(
-      (response) => {
-        this.getData();
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+  delete(id: any) {
+      this.service.delete(id).subscribe(
+        (response) => {
+          this.getData();
+          console.log(response);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 }
