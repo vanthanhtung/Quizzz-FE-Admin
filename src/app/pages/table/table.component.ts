@@ -12,7 +12,7 @@ declare interface TableData {}
 export class TableComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, public service: UserService) {
-    
+
   }
 
   message='';
@@ -35,18 +35,19 @@ export class TableComponent implements OnInit {
   }
 
   changeRole(id): void {
-    this.service.changRole(id, this.currentUser).subscribe(
-      (data) => {
-        this.currentUser = data;
-        this.getData();
-        console.log(data);
-        this.isChangedOk = true;
-        this.message = 'Successful'
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    if (confirm("Are you sure?")){
+      this.service.changRole(id, this.currentUser).subscribe(
+        (data) => {
+          this.currentUser = data;
+          this.getData();
+          console.log(data);
+          this.isChangedOk = true;
+          this.message = 'Successful'
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
   }
-
 }

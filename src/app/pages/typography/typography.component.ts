@@ -32,6 +32,7 @@ export class TypographyComponent implements OnInit{
   }
 
   delete(id: any) {
+    if (confirm("Press OK to confirm")){
       this.service.delete(id).subscribe(
         (response) => {
           this.getData();
@@ -41,5 +42,6 @@ export class TypographyComponent implements OnInit{
           console.log(error);
         }
       );
+    }
   }
 }
