@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CategoryService } from "../services/category.service";
 import { QuizService } from "../services/quiz.service";
 @Component({
@@ -6,6 +8,7 @@ import { QuizService } from "../services/quiz.service";
   templateUrl: "./create-quiz.component.html",
 })
 export class CreateQuizComponent implements OnInit {
+  createQuizForm: FormGroup;
   quizes: any = [];
 
   categoryId: 0;
@@ -30,12 +33,19 @@ export class CreateQuizComponent implements OnInit {
 
   constructor(
     public service: QuizService,
-    public categoryService: CategoryService
+    public categoryService: CategoryService,
+    private route: Router,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.getData();
     this.getAllCategory();
+    this.createQuizForm = this.fb.group(
+      {
+        content: ['',[Validators.required]]
+      }
+    )
   }
   getData(): void {
     this.service.getAll().subscribe(
@@ -66,6 +76,7 @@ export class CreateQuizComponent implements OnInit {
     this.quiz.answers.push(this.answer1,this.answer2,this.answer3,this.answer4);
     this.service.create(this.quiz).subscribe(
       (response) => {
+        this.route.navigateByUrl("typography")
         console.log(response);
         this.getData();
         this.getAllCategory();
