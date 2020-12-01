@@ -20,9 +20,19 @@
     <label for="level"><b>level</b></label>
     <input type="text"  name="level" id="level" required [(ngModel)]="quiz.level">
     <br><br>
-    <label for="score"><b>score</b></label>
-    <input type="text"  name="score" id="score" required [(ngModel)]="quiz.score">
+    <label>Answer A</label>
+    <textarea name="answer1" placeholder="Enter the correct answer" [(ngModel)]="answer1.content"></textarea>
+    <label>Answer B</label>
+    <textarea name="answer2" placeholder="Enter the incorrect answer" [(ngModel)]="answer2.content"></textarea>
+    <label>Answer C</label>
+    <textarea name="answer3" placeholder="Enter the incorrect answer" [(ngModel)]="answer3.content"></textarea>
+    <label>Answer D</label>
+    <textarea name="answer4" placeholder="Enter the incorrect answer" [(ngModel)]="answer4.content"></textarea>
+
+  <br><br>
     <hr>
     <td><button type="button" class="btn btn-primary" (click)=createNew() [routerLink]="['/typography']">Submit</button></td>
   </div>
+
+
 </form>
