@@ -14,7 +14,7 @@ import { AppRoutes } from './app.routing';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateQuizComponent } from './pages/create-quiz/create-quiz.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
@@ -39,7 +39,8 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     FixedPluginModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
