@@ -9,6 +9,7 @@ import { UpgradeComponent } from "../../pages/upgrade/upgrade.component";
 import { CategoriesComponent } from "app/pages/categories/categories.component";
 import { CreateQuizComponent } from 'app/pages/create-quiz/create-quiz.component';
 import { CreateExamComponent } from 'app/pages/create-exam/create-exam.component';
+import { ExamDetailComponent } from 'app/pages/exam-detail/exam-detail.component';
 
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
@@ -19,5 +20,6 @@ export const AdminLayoutRoutes: Routes = [
   { path: "notifications", component: NotificationsComponent },
   { path: "upgrade", component: UpgradeComponent },
   { path: "createquiz", component: CreateQuizComponent},
-  { path: "createexam", component: CreateExamComponent}
+  { path: "createexam", component: CreateExamComponent},
+  { path: "examDetail/:id", component: ExamDetailComponent}
 ];

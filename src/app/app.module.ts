@@ -20,8 +20,6 @@ import { CreateQuizComponent } from './pages/create-quiz/create-quiz.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { CreateExamComponent } from './pages/create-exam/create-exam.component';
 import { CommonModule } from '@angular/common';
-
-
 @NgModule({
   declarations: [
     AppComponent,

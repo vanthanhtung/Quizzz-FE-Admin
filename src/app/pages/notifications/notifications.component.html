@@ -34,7 +34,7 @@
                   {{exam.duration}}
                 </td>
                 <td class="text-right">
-                  <button type="button" class="btn btn-primary" [routerLink]="['/notifications']">Edit</button>
+                  <button type="button" class="btn btn-primary" [routerLink]="['/examDetail',exam.id]">Detail</button>
                   <button type="button" class="btn btn-danger" (click)="delete(exam.id)">Delete</button>
                 </td>
               </tr>
