@@ -18,6 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateQuizComponent } from './pages/create-quiz/create-quiz.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { CreateExamComponent } from './pages/create-exam/create-exam.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     AppComponent,
     AdminLayoutComponent,
     LoginFormComponent,
-    CreateQuizComponent
+    CreateQuizComponent,
+    CreateExamComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -40,7 +43,9 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     FormsModule,
     HttpClientModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    CommonModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

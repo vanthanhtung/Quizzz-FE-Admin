@@ -5,15 +5,11 @@
 
     <div class="input-group mb-3">
       <div class="col-12">Categories</div>
-      <select
-        class="custom-select"
-        [(ngModel)]="quiz.category.id"
+      <select class="custom-select" [(ngModel)]="quiz.category.id"
         name="category"
-        id="inputGroupSelect01"
-      >
+        id="inputGroupSelect01">
         <option *ngFor="let cate of categories" [value]="cate.id">
-          {{ cate.name }}
-        </option>
+          {{ cate.name }}</option>
       </select>
     </div>
 
