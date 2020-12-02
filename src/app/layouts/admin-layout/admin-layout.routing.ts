@@ -7,7 +7,8 @@ import { TypographyComponent } from "../../pages/typography/typography.component
 import { NotificationsComponent } from "../../pages/notifications/notifications.component";
 import { UpgradeComponent } from "../../pages/upgrade/upgrade.component";
 import { CategoriesComponent } from "app/pages/categories/categories.component";
-import { CreateQuizComponent } from 'app/pages/create-quiz/create-quiz.component';
+import { CreateQuizComponent } from "app/pages/create-quiz/create-quiz.component";
+import { RecordComponent } from "app/pages/record/record.component";
 
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
@@ -17,5 +18,6 @@ export const AdminLayoutRoutes: Routes = [
   { path: "categories", component: CategoriesComponent },
   { path: "notifications", component: NotificationsComponent },
   { path: "upgrade", component: UpgradeComponent },
-  { path: "createquiz", component: CreateQuizComponent}
+  { path: "createquiz", component: CreateQuizComponent },
+  { path: "record", component: RecordComponent },
 ];
