@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CategoryService } from '../services/category.service';
 import { ExamService } from '../services/exam.service';
 import { QuizService } from '../services/quiz.service';
 
@@ -9,46 +10,34 @@ import { QuizService } from '../services/quiz.service';
 })
 export class CreateExamComponent implements OnInit {
 
-  quizes: any = [];
-  categories: any = [];
   answers: any = [];
 
-  quiz = {
-    content: "",
-    type: "",
-    level: "",
-    _active: true,
-    category: {
-      id: null,
-    },
-    answers: []
-  };
-
-
+  categories: any = [];
 
   exam = {
     anabled: true,
     duration: 0,
     exam_code: "",
     exam_name: "",
-    numberOfQuiz:0
+    numberOfQuiz:0,
+    category: ""
   }
 
   constructor(
     public quizService: QuizService,
     public examService: ExamService,
+    public categoryService: CategoryService,
     public route: Router
   ) { }
 
   ngOnInit(): void {
-    this.getAllQuiz();
+    this.getAllCategory();
   }
 
-  getAllQuiz(): void {
-    this.quizService.getAll().subscribe(
+  getAllCategory(): void {
+    this.categoryService.getAll().subscribe(
       (data) => {
-        this.quizes = data;
-        console.log(data);
+        this.categories = data;
       },
       (error) => {
         console.log(error);

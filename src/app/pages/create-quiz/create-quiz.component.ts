@@ -16,9 +16,9 @@ export class CreateQuizComponent implements OnInit {
   answer1 =  {
     _correct: true
   }
-  answer2 =  {}
-  answer3 =  {}
-  answer4 =  {}
+  answer2 =  {_correct: false}
+  answer3 =  {_correct: false}
+  answer4 =  {_correct: false}
 
   quiz = {
     content: "",
@@ -73,13 +73,12 @@ export class CreateQuizComponent implements OnInit {
   }
 
   createNew(): void {
+    debugger
     this.quiz.answers.push(this.answer1,this.answer2,this.answer3,this.answer4);
     this.service.create(this.quiz).subscribe(
       (response) => {
         this.route.navigateByUrl("typography")
         console.log(response);
-        this.getData();
-        this.getAllCategory();
       },
       (error) => {
         console.log(error);

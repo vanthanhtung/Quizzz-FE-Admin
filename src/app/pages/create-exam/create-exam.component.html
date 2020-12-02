@@ -5,6 +5,17 @@
 
     <form class="exam-form">
       <div class="card demo-icons">
+
+        <div class="input-group mb-3">
+          <div class="col-12">Categories</div>
+          <select class="custom-select" [(ngModel)]="exam.category"
+            name="category"
+            id="inputGroupSelect01">
+            <option *ngFor="let cate of categories" [value]="cate.name">
+              {{ cate.name }}</option>
+          </select>
+        </div>
+
         <label for="type"><b>Exam name</b></label>
       <input type="text" placeholder="enter name" name="exam_name" id="exam_name" required [(ngModel)]="exam.exam_name" />
       <br>

@@ -21,7 +21,7 @@ export class ExamService {
     }
 
     create(data): Observable<any>{
-      return this.http.post(baseUrl,data);
+      return this.http.post('http://localhost:5432/exams/create',data);
     }
 
     delete(id: any): Observable<any>{
