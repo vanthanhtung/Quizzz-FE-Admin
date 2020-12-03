@@ -20,6 +20,7 @@ export class CreateExamComponent implements OnInit {
     exam_code: "",
     exam_name: "",
     numberOfQuiz:0,
+    score:0,
     category: ""
   }
 

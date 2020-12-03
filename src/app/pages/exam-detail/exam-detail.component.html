@@ -1,4 +1,4 @@
-<td><button type="button" class="btn btn-primary" [routerLink]="['/notifications']">Back to List</button></td>
+<td><button type="button" class="btn btn-primary" (click)="cancel()">Back to List</button></td>
 <form >
   <div class="container">
     <h1>Detail</h1>
@@ -15,3 +15,14 @@
     </table>
   </div>
 </form>
+
+<table mdbTable>
+  <thead>
+      <th>Content</th>
+  </thead>
+  <tbody>
+    <tr mdbTableCol *ngFor="let quiz of currentExam.quizSet">
+      <td>{{quiz.content}}</td>
+    </tr>
+  </tbody>
+</table>

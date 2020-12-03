@@ -31,6 +31,7 @@ export class ExamDetailComponent implements OnInit {
   }
 
   getCurrentExam(id) {
+    debugger
     this.examService.getById(id)
       .subscribe(
        data => {
@@ -41,5 +42,9 @@ export class ExamDetailComponent implements OnInit {
          console.log(error)
        }
      );
+  }
+
+  cancel(){
+    this.router.navigateByUrl("notifications");
   }
 }

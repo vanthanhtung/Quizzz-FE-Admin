@@ -27,6 +27,9 @@
       <br>
       <label for="type"><b>Number of Quiz</b></label>
       <input type="text" name="number" id="number" required [(ngModel)]="exam.numberOfQuiz" placeholder="1 ~ 50" />
+      <br>
+      <label for="type"><b>Total Score</b></label>
+      <input type="text" name="number" id="number" required [(ngModel)]="exam.score"/>
         <div>
           <br>
           <button type="submit" class="btn btn-primary" (click)="submit()">Submit</button>
