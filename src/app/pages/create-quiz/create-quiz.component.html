@@ -18,25 +18,20 @@
     <textarea
       style="width: 400px; height: 200px"
       [(ngModel)]="quiz.content"
-      name="content"
+      name="content" id="content" required #name="ngModel"
     >
     </textarea>
     <div
       class="alert alert-danger"
       role="alert"
       *ngIf="
-        createQuizForm.get('content').invalid &&
-        createQuizForm.get('content').touched
+      name.invalid && (name.dirty || name.touched)
       "
     >
-      <span *ngIf="createQuizForm.get('content').hasError('required')"
+      <span *ngIf="name.errors.required"
         >Content is required</span
       >
     </div>
-
-    <br /><br />
-    <label for="type"><b>type</b></label>
-    <input type="text" name="type" id="type" required [(ngModel)]="quiz.type" />
     <br /><br />
     <div class="input-group mb-3">
       <div class="col-12">Level</div>
@@ -53,29 +48,76 @@
     </div>
     <br /><br />
     <label>Answer A</label>
-    <textarea
+    <textarea id="answer1" required
       name="answer1"
       placeholder="Enter the correct answer"
-      [(ngModel)]="answer1.content"
+      [(ngModel)]="answer1.content" #name="ngModel"
     ></textarea>
+    <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="
+      name.invalid && (name.dirty || name.touched)
+      "
+    >
+      <span *ngIf="name.errors.required"
+        >Answer is required</span
+      >
+    </div>
+
     <label>Answer B</label>
-    <textarea
+    <textarea id="answer2" required
       name="answer2"
       placeholder="Enter the incorrect answer"
-      [(ngModel)]="answer2.content"
+      [(ngModel)]="answer2.content" #name="ngModel"
     ></textarea>
+    <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="
+      name.invalid && (name.dirty || name.touched)
+      "
+    >
+      <span *ngIf="name.errors.required"
+        >Answer is required</span
+      >
+    </div>
+
     <label>Answer C</label>
     <textarea
-      name="answer3"
+      name="answer3" id="answer3" required
       placeholder="Enter the incorrect answer"
-      [(ngModel)]="answer3.content"
+      [(ngModel)]="answer3.content" #name="ngModel"
     ></textarea>
+    <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="
+      name.invalid && (name.dirty || name.touched)
+      "
+    >
+      <span *ngIf="name.errors.required"
+        >Answer is required</span
+      >
+    </div>
+
     <label>Answer D</label>
     <textarea
-      name="answer4"
+      name="answer4" id="answer4" required
       placeholder="Enter the incorrect answer"
-      [(ngModel)]="answer4.content"
+      [(ngModel)]="answer4.content" #name="ngModel"
     ></textarea>
+    <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="
+      name.invalid && (name.dirty || name.touched)
+      "
+    >
+      <span *ngIf="name.errors.required"
+        >Answer is required</span
+      >
+    </div>
 
     <br /><br />
     <hr />

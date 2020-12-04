@@ -13,9 +13,6 @@
                 User name
               </th>
               <th>
-                Image
-              </th>
-              <th>
                 Email
               </th>
               <th>
@@ -23,6 +20,9 @@
               </th>
               <th>
                 Address
+              </th>
+              <th>
+                Exam history
               </th>
               <th class="text-right">
                 Set as admin
@@ -34,9 +34,6 @@
                   {{user.username}}
                 </td>
                 <td>
-                  {{user.image}}
-                </td>
-                <td>
                   {{user.email}}
                 </td>
                 <td>
@@ -44,6 +41,9 @@
                 </td>
                 <td>
                   {{user.address}}
+                </td>
+                <td>
+                  <button type="button" class="btn btn-primary" [routerLink]="['/dashboard']">View</button>
                 </td>
                 <td class="text-right">
                   <button type="button" class="btn btn-primary" (click)="changeRole(user.id)"

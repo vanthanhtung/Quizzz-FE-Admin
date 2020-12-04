@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from "ngx-toastr";
 import { ExamService } from '../services/exam.service';
 
@@ -11,7 +12,7 @@ import { ExamService } from '../services/exam.service';
 
 export class NotificationsComponent implements OnInit{
   constructor(
-    private toastr: ToastrService,
+    public router: Router,
     public service: ExamService
     ){}
 
@@ -47,4 +48,5 @@ export class NotificationsComponent implements OnInit{
       );
     }
   }
+
 }

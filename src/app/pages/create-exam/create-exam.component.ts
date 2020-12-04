@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CategoryService } from '../services/category.service';
 import { ExamService } from '../services/exam.service';
@@ -9,7 +10,7 @@ import { QuizService } from '../services/quiz.service';
   templateUrl: './create-exam.component.html'
 })
 export class CreateExamComponent implements OnInit {
-
+  createExamForm: FormGroup;
   answers: any = [];
 
   categories: any = [];
@@ -28,11 +29,21 @@ export class CreateExamComponent implements OnInit {
     public quizService: QuizService,
     public examService: ExamService,
     public categoryService: CategoryService,
-    public route: Router
+    public route: Router,
+    public fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
     this.getAllCategory();
+    this.createExamForm = this.fb.group(
+      {
+        exam_name: ['',[Validators.required]],
+        exam_code: ['',[Validators.required]],
+        duration: ['',[Validators.required]],
+        numberOfQuiz: ['',[Validators.required]],
+        score: ['',[Validators.required]]
+      }
+    )
   }
 
   getAllCategory(): void {
@@ -47,15 +58,17 @@ export class CreateExamComponent implements OnInit {
   }
 
   submit(){
-    this.examService.create(this.exam).subscribe(
-      (response) => {
-        this.route.navigateByUrl("notifications")
-        console.log(response);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    if (this.exam.duration >0 && this.exam.numberOfQuiz >0 && this.exam.score >0){
+      this.examService.create(this.exam).subscribe(
+        (response) => {
+          this.route.navigateByUrl("notifications")
+          console.log(response);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
   }
 
   cancel(){

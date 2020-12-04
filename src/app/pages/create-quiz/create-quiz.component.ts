@@ -43,7 +43,11 @@ export class CreateQuizComponent implements OnInit {
     this.getAllCategory();
     this.createQuizForm = this.fb.group(
       {
-        content: ['',[Validators.required]]
+        content: ['',[Validators.required]],
+        answer1: ['',[Validators.required]],
+        answer2: ['',[Validators.required]],
+        answer3: ['',[Validators.required]],
+        answer4: ['',[Validators.required]]
       }
     )
   }
