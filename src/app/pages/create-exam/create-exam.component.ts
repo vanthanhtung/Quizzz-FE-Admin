@@ -16,7 +16,12 @@ export class CreateExamComponent implements OnInit {
   message2= '(*)Should be a number 1~50';
   message3 = '(*)Should be a number > 0'
   categories: any = [];
+  exams: any = [];
 
+  isDuplicate1 = false;
+  isDuplicate2 = false;
+  duplicateMess1 = 'This exam name is duplicate, make another!';
+  duplicateMess2 = 'This exam code is duplicate, make another!';
   exam = {
     anabled: true,
     duration: null,
@@ -48,6 +53,18 @@ export class CreateExamComponent implements OnInit {
     )
   }
 
+
+  getAllExams(): void {
+    this.examService.getAll().subscribe(
+      (data) => {
+        this.exams = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
   getAllCategory(): void {
     this.categoryService.getAll().subscribe(
       (data) => {
@@ -59,7 +76,17 @@ export class CreateExamComponent implements OnInit {
     );
   }
 
+  checkDuplicate(isDuplicate){
+    for (const x of this.exams) {
+      if(x.exam_name === this.exam.exam_name || x.exam_code === this.exam.exam_code) {
+        isDuplicate = true
+      }
+    }
+  }
+
   submit(){
+    this.checkDuplicate(this.isDuplicate1);
+    this.checkDuplicate(this.isDuplicate2);
     if (this.exam.duration >0 && this.exam.numberOfQuiz >0 && this.exam.score >0){
       this.examService.create(this.exam).subscribe(
         (response) => {

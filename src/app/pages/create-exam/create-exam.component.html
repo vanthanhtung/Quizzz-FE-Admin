@@ -16,14 +16,20 @@
 
         <label for="type"><b>Exam name</b></label>
       <input type="text" placeholder="enter name" name="exam_name" id="exam_name" required [(ngModel)]="exam.exam_name" #name="ngModel"/>
-      <div style="color: red; position: fixed;" *ngIf="name.invalid && (name.dirty || name.touched)">
+      <div style="color: red;" *ngIf="name.invalid && (name.dirty || name.touched)">
       <span *ngIf="name.errors.required">Exam's name is required</span>
+    </div>
+    <div style="color: red;">
+      <span *ngIf="isDuplicate1">{{duplicateMess1}}</span >
     </div>
       <br>
       <label for="type"><b>Exam code</b></label>
       <input type="text" placeholder="enter code" name="exam_code" id="exam_code" required [(ngModel)]="exam.exam_code" #code="ngModel" />
       <div style="color: red;" *ngIf="code.invalid && (code.dirty || code.touched)">
       <span *ngIf="code.errors.required">Exam's code is required</span>
+    </div>
+    <div style="color: red;">
+      <span *ngIf="isDuplicate2">{{duplicateMess2}}</span >
     </div>
 
       <br>
