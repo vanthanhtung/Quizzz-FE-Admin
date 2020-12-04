@@ -17,7 +17,9 @@
     </textarea>
     <div style="color: red;" *ngIf=" content.invalid && (content.dirty || content.touched)" >
       <span *ngIf="content.errors.required">Content is required</span >
-        <span *ngIf="isDuplicate == true">{{duplicateMess}}</span >
+    </div>
+    <div style="color: red;">
+      <span *ngIf="isDuplicate">{{duplicateMess}}</span >
     </div>
     </div>
     <br />

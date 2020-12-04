@@ -58,16 +58,19 @@ export class CreateQuizComponent implements OnInit {
     this.service.getAll().subscribe(
       (data) => {
         this.quizes = data;
-        for (const x of this.quizes) {
-          if(x.content === this.quiz.content) {
-            this.isDuplicate = true
-          }
-        }
       },
       (error) => {
         console.log(error);
       }
     );
+  }
+
+  checkDuplicate(){
+    for (const x of this.quizes) {
+      if(x.content === this.quiz.content) {
+        this.isDuplicate = true
+      }
+    }
   }
 
   categories: any = [];
@@ -85,12 +88,10 @@ export class CreateQuizComponent implements OnInit {
   }
 
   createNew(): void {
-    debugger
+    this.checkDuplicate();
     this.quiz.answers.push(this.answer1,this.answer2,this.answer3,this.answer4);
-    debugger
     this.service.create(this.quiz).subscribe(
       (response) => {
-        debugger
         this.route.navigateByUrl("typography")
         console.log(response);
       },
