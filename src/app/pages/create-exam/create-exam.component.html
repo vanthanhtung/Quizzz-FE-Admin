@@ -46,47 +46,23 @@
     </div>
 
       <br>
-      <label for="type"><b>Duration</b></label>
+      <label for="type"><b>Duration (sec)</b></label>
       <input type="text" name="duration" id="duration" required [(ngModel)]="exam.duration" #name="ngModel"/>
-      <div
-      class="alert alert-danger"
-      role="alert"
-      *ngIf="
-      name.invalid && (name.dirty || name.touched)
-      "
-    >
-      <span *ngIf="name.errors.required"
-        >Exam's duration should be a number</span
-      >
-    </div>
+    <div class="alert alert-success"
+    *ngIf="exam.duration <= 0">{{message1}}</div>
+
       <br>
       <label for="type"><b>Number of Quiz</b></label>
       <input type="text" name="number" id="number" required [(ngModel)]="exam.numberOfQuiz" placeholder="1 ~ 50" #name="ngModel"/>
-      <div
-      class="alert alert-danger"
-      role="alert"
-      *ngIf="
-      name.invalid && (name.dirty || name.touched)
-      "
-    >
-      <span *ngIf="name.errors.required"
-        >Should be a number</span
-      >
-    </div>
+      <div class="alert alert-success"
+    *ngIf="exam.numberOfQuiz <= 0">{{message2}}</div>
+
       <br>
       <label for="type"><b>Total Score</b></label>
       <input type="text" name="number" id="number" required [(ngModel)]="exam.score" #name="ngModel"/>
-      <div
-      class="alert alert-danger"
-      role="alert"
-      *ngIf="
-      name.invalid && (name.dirty || name.touched)
-      "
-    >
-      <span *ngIf="name.errors.required"
-        >Should be a number, example: 100,..</span
-      >
-    </div>
+      <div class="alert alert-success"
+    *ngIf="exam.score <= 0">{{message3}}</div>
+
         <div>
           <br>
           <button type="submit" class="btn btn-primary" (click)="submit()">Submit</button>
