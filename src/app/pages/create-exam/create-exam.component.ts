@@ -12,9 +12,9 @@ import { QuizService } from '../services/quiz.service';
 export class CreateExamComponent implements OnInit {
   createExamForm: FormGroup;
   answers: any = [];
-  message1 = 'Duration should be a number > 0';
-  message2= 'Should be a number 1~50';
-  message3 = 'Should be a number > 0'
+  message1 = '(*)Duration should be a number > 0';
+  message2= '(*)Should be a number 1~50';
+  message3 = '(*)Should be a number > 0'
   categories: any = [];
 
   exam = {

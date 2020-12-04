@@ -8,60 +8,38 @@
 
         <div class="input-group mb-3">
           <div class="col-12">Categories</div>
-          <select class="custom-select" [(ngModel)]="exam.category"
-            name="category"
-            id="inputGroupSelect01">
+          <select class="custom-select" [(ngModel)]="exam.category" name="category" id="inputGroupSelect01">
             <option *ngFor="let cate of categories" [value]="cate.name">
               {{ cate.name }}</option>
           </select>
         </div>
 
         <label for="type"><b>Exam name</b></label>
-      <input type="text" placeholder="enter name" name="exam_name"
-      id="exam_name" required [(ngModel)]="exam.exam_name" #name="ngModel"/>
-      <div
-      class="alert alert-danger"
-      role="alert"
-      *ngIf="
-      name.invalid && (name.dirty || name.touched)
-      "
-    >
-      <span *ngIf="name.errors.required"
-        >Exam's name is required</span
-      >
+      <input type="text" placeholder="enter name" name="exam_name" id="exam_name" required [(ngModel)]="exam.exam_name" #name="ngModel"/>
+      <div style="color: red; position: fixed;" *ngIf="name.invalid && (name.dirty || name.touched)">
+      <span *ngIf="name.errors.required">Exam's name is required</span>
     </div>
       <br>
       <label for="type"><b>Exam code</b></label>
-      <input type="text" placeholder="enter code" name="exam_code" id="exam_code" required [(ngModel)]="exam.exam_code" #name="ngModel" />
-      <div
-      class="alert alert-danger"
-      role="alert"
-      *ngIf="
-      name.invalid && (name.dirty || name.touched)
-      "
-    >
-      <span *ngIf="name.errors.required"
-        >Exam's code is required</span
-      >
+      <input type="text" placeholder="enter code" name="exam_code" id="exam_code" required [(ngModel)]="exam.exam_code" #code="ngModel" />
+      <div style="color: red;" *ngIf="code.invalid && (code.dirty || code.touched)">
+      <span *ngIf="code.errors.required">Exam's code is required</span>
     </div>
 
       <br>
       <label for="type"><b>Duration (sec)</b></label>
-      <input type="text" name="duration" id="duration" required [(ngModel)]="exam.duration" #name="ngModel"/>
-    <div class="alert alert-success"
-    *ngIf="exam.duration <= 0">{{message1}}</div>
+      <input type="text" name="duration" id="duration" required [(ngModel)]="exam.duration" #duration="ngModel"/>
+    <div style="color: red;" *ngIf="exam.duration <= 0 || duration.invalid && (duration.dirty || duration.touched)">{{message1}}</div>
 
       <br>
       <label for="type"><b>Number of Quiz</b></label>
-      <input type="text" name="number" id="number" required [(ngModel)]="exam.numberOfQuiz" placeholder="1 ~ 50" #name="ngModel"/>
-      <div class="alert alert-success"
-    *ngIf="exam.numberOfQuiz <= 0">{{message2}}</div>
+      <input type="text" name="number" id="number" required [(ngModel)]="exam.numberOfQuiz" placeholder="1 ~ 50" #numberOfQuiz="ngModel"/>
+      <div style="color: red;" *ngIf="exam.numberOfQuiz <= 0|| exam.numberOfQuiz > 50 || numberOfQuiz.invalid && (numberOfQuiz.dirty || numberOfQuiz.touched)">{{message2}}</div>
 
       <br>
       <label for="type"><b>Total Score</b></label>
-      <input type="text" name="number" id="number" required [(ngModel)]="exam.score" #name="ngModel"/>
-      <div class="alert alert-success"
-    *ngIf="exam.score <= 0">{{message3}}</div>
+      <input type="text" name="number" id="number" required [(ngModel)]="exam.score" #score="ngModel"/>
+      <div style="color: red;" *ngIf="exam.score <= 0 || score.invalid && (score.dirty || score.touched)">{{message3}}</div>
 
         <div>
           <br>

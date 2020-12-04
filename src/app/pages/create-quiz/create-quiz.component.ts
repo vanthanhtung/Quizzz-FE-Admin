@@ -10,15 +10,18 @@ import { QuizService } from "../services/quiz.service";
 export class CreateQuizComponent implements OnInit {
   createQuizForm: FormGroup;
   quizes: any = [];
+  duplicateMess = 'You have this quiz already, make another!';
 
   categoryId: 0;
+  isDuplicate = false;
 
   answer1 =  {
+    content: '',
     _correct: true
   }
-  answer2 =  {_correct: false}
-  answer3 =  {_correct: false}
-  answer4 =  {_correct: false}
+  answer2 =  {content: '', _correct: false}
+  answer3 =  {content: '', _correct: false}
+  answer4 =  {content: '', _correct: false}
 
   quiz = {
     content: "",
@@ -55,6 +58,11 @@ export class CreateQuizComponent implements OnInit {
     this.service.getAll().subscribe(
       (data) => {
         this.quizes = data;
+        for (const x of this.quizes) {
+          if(x.content === this.quiz.content) {
+            this.isDuplicate = true
+          }
+        }
       },
       (error) => {
         console.log(error);
@@ -79,8 +87,10 @@ export class CreateQuizComponent implements OnInit {
   createNew(): void {
     debugger
     this.quiz.answers.push(this.answer1,this.answer2,this.answer3,this.answer4);
+    debugger
     this.service.create(this.quiz).subscribe(
       (response) => {
+        debugger
         this.route.navigateByUrl("typography")
         console.log(response);
       },

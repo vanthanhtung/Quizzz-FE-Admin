@@ -15,7 +15,9 @@ export class CategoriesComponent implements OnInit {
     name: "",
   };
 
-  constructor(private service: CategoriesService, private router: Router) {}
+  constructor(private service: CategoriesService,
+    private route: Router,
+    private router: Router) {}
 
   ngOnInit(): void {
     this.getCategories();
@@ -35,6 +37,7 @@ export class CategoriesComponent implements OnInit {
 
   refreshList(): void {
     this.getCategories();
+    this.category.name= null;
     this.currentCategory = null;
     this.currentIndex = -1;
   }
@@ -60,6 +63,7 @@ export class CategoriesComponent implements OnInit {
       this.service.delete(id).subscribe(
         (response) => {
           this.refreshList();
+          this.route.navigateByUrl("categories")
           console.log(response);
         },
         (error) => {

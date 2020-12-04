@@ -1,130 +1,64 @@
 <form action="action_page.php">
   <div class="container">
     <h1>Create new Quiz</h1>
-    <p style="color:red"><i>(*) Please fill in this form to create a new quiz.</i></p>
+    <p style="color:red"><i>(*) You need have atleast 1 Category before creating Quiz.</i></p>
 
-    <div class="input-group mb-3">
-      <div class="col-12">Categories</div>
-      <select class="custom-select" [(ngModel)]="quiz.category.id"
-        name="category"
-        id="inputGroupSelect01">
-        <option *ngFor="let cate of categories" [value]="cate.id">
-          {{ cate.name }}</option>
+    <div class="input-group">
+      <div class="">Categories </div>
+      <select style="width: 250px;margin-left: 50px;" [(ngModel)]="quiz.category.id" name="category" id="inputGroupSelect01">
+        <option *ngFor="let cate of categories" [value]="cate.id">{{ cate.name }}</option>
       </select>
     </div>
 
-    <br /><br />
-    <label for="content"><b>Content</b></label>
-    <textarea
-      style="width: 400px; height: 200px"
-      [(ngModel)]="quiz.content"
-      name="content" id="content" required #name="ngModel"
-    >
+    <br />
+    <div class="row" style="margin-left: 0px;">
+      <label for="content">Content</label>
+    <textarea style="width: 400px; height: 200px; margin-left: 67px;" [(ngModel)]="quiz.content" name="content" id="content" required #content="ngModel">
     </textarea>
-    <div
-      class="alert alert-danger"
-      role="alert"
-      *ngIf="
-      name.invalid && (name.dirty || name.touched)
-      "
-    >
-      <span *ngIf="name.errors.required"
-        >Content is required</span
-      >
+    <div style="color: red;" *ngIf=" content.invalid && (content.dirty || content.touched)" >
+      <span *ngIf="content.errors.required">Content is required</span >
+        <span *ngIf="isDuplicate == true">{{duplicateMess}}</span >
     </div>
-    <br /><br />
-    <div class="input-group mb-3">
-      <div class="col-12">Level</div>
-      <select
-        class="custom-select"
-        [(ngModel)]="quiz.level"
-        name="level"
-        id="inputGroupSelect01"
-      >
+    </div>
+    <br />
+    <div class="input-group" style="margin-left: 6px;">
+      <div class="">Level</div>
+      <select style="width: 250px;margin-left: 81px;" [(ngModel)]="quiz.level" name="level" id="inputGroupSelect01">
         <option value="EASY">EASY</option>
         <option value="MEDIUM">MEDIUM</option>
         <option value="HARD">HARD</option>
       </select>
     </div>
     <br /><br />
-    <label>Answer A</label>
-    <textarea id="answer1" required
-      name="answer1"
-      placeholder="Enter the correct answer"
-      [(ngModel)]="answer1.content" #name="ngModel"
-    ></textarea>
-    <div
-      class="alert alert-danger"
-      role="alert"
-      *ngIf="
-      name.invalid && (name.dirty || name.touched)
-      "
-    >
-      <span *ngIf="name.errors.required"
-        >Answer is required</span
-      >
+    <div class="row">
+      <label style="margin-left: 22px;">Correct Answer</label>
+    <textarea id="answer1" style="margin-left: 61px;" required name="answer1" placeholder="Enter the correct answer" [(ngModel)]="answer1.content" #answerr1="ngModel" ></textarea>
+    <div style="color: red;" *ngIf=" answerr1.invalid && (answerr1.dirty || answerr1.touched)">
+      <span *ngIf="answerr1.errors.required">Answer is required</span>
     </div>
-
-    <label>Answer B</label>
-    <textarea id="answer2" required
-      name="answer2"
-      placeholder="Enter the incorrect answer"
-      [(ngModel)]="answer2.content" #name="ngModel"
-    ></textarea>
-    <div
-      class="alert alert-danger"
-      role="alert"
-      *ngIf="
-      name.invalid && (name.dirty || name.touched)
-      "
-    >
-      <span *ngIf="name.errors.required"
-        >Answer is required</span
-      >
     </div>
+    <br>
 
-    <label>Answer C</label>
-    <textarea
-      name="answer3" id="answer3" required
-      placeholder="Enter the incorrect answer"
-      [(ngModel)]="answer3.content" #name="ngModel"
-    ></textarea>
-    <div
-      class="alert alert-danger"
-      role="alert"
-      *ngIf="
-      name.invalid && (name.dirty || name.touched)
-      "
-    >
-      <span *ngIf="name.errors.required"
-        >Answer is required</span
-      >
+    <div class="row">
+      <label style="margin-left: 22px;">Incorrect Answer</label>
+    <textarea id="answer2" style="margin-left: 50px;" required name="answer2" placeholder="Enter the incorrect answer" [(ngModel)]="answer2.content" #answerr2="ngModel" ></textarea>
+    <div style="color: red;" *ngIf=" answerr2.invalid && (answerr2.dirty || answerr2.touched)">
+      <span *ngIf="answerr2.errors.required">Answer is required</span></div>
+      <textarea id="answer3" style="margin-left: 50px;" required name="answer3" placeholder="Enter the incorrect answer" [(ngModel)]="answer3.content" #answerr3="ngModel" ></textarea>
+      <div style="color: red;" *ngIf=" answerr3.invalid && (answerr3.dirty || answerr3.touched)">
+        <span *ngIf="answerr3.errors.required">Answer is required</span>
+      </div>
+      <textarea id="answer4" style="margin-left: 50px;" required name="answer4" placeholder="Enter the incorrect answer" [(ngModel)]="answer4.content" #answerr4="ngModel" ></textarea>
+      <div style="color: red;" *ngIf=" answerr4.invalid && (answerr4.dirty || answerr4.touched)">
+        <span *ngIf="answerr4.errors.required">Answer is required</span>
+      </div>
     </div>
-
-    <label>Answer D</label>
-    <textarea
-      name="answer4" id="answer4" required
-      placeholder="Enter the incorrect answer"
-      [(ngModel)]="answer4.content" #name="ngModel"
-    ></textarea>
-    <div
-      class="alert alert-danger"
-      role="alert"
-      *ngIf="
-      name.invalid && (name.dirty || name.touched)
-      "
-    >
-      <span *ngIf="name.errors.required"
-        >Answer is required</span
-      >
-    </div>
-
-    <br /><br />
     <hr />
     <td>
-      <button type="submit" class="btn btn-primary" (click)="createNew()">
+      <button type="button" class="btn btn-primary" (click)="createNew()">
         Submit
       </button>
     </td>
   </div>
 </form>
+
