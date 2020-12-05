@@ -25,7 +25,7 @@ export class CreateQuizComponent implements OnInit {
 
   quiz = {
     content: "",
-    type: "",
+    type : 1,
     level: "",
     _active: true,
     category: {
