@@ -18,6 +18,9 @@
               <th>
                 Duration
               </th>
+              <th>
+                Total score
+              </th>
               <th class="text-right">
                 Action
               </th>
@@ -33,8 +36,10 @@
                 <td>
                   {{exam.duration}}
                 </td>
+                <td>
+                  {{exam.score}}
+                </td>
                 <td class="text-right">
-                  <button type="button" class="btn btn-primary" [routerLink]="['/examDetail',exam.id]">Detail</button>
                   <button type="button" class="btn btn-danger" (click)="delete(exam.id)">Delete</button>
                 </td>
               </tr>

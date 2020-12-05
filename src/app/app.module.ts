@@ -20,6 +20,7 @@ import { CreateQuizComponent } from './pages/create-quiz/create-quiz.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { CreateExamComponent } from './pages/create-exam/create-exam.component';
 import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser'
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,8 @@ import { CommonModule } from '@angular/common';
     CreateExamComponent
   ],
   imports: [
+    FormsModule,
+    CommonModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(AppRoutes,{
       useHash: true
@@ -38,12 +41,12 @@ import { CommonModule } from '@angular/common';
     ToastrModule.forRoot(),
     FooterModule,
     FixedPluginModule,
-    FormsModule,
+
     HttpClientModule,
     NgbModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
-    CommonModule
+    BrowserAnimationsModule
+
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

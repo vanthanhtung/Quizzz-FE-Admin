@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-danger" [routerLink]="['/createquiz']">Add new Quiz</button>
+<button type="button" class="btn btn-primary" [routerLink]="['/createquiz']">Add new Quiz</button>
 <div class="row">
   <div class="col-md-12">
     <div class="card">
@@ -16,9 +16,6 @@
                 Content
               </th>
               <th>
-                Type
-              </th>
-              <th>
                 Level
               </th>
               <th class="text-right">
@@ -34,13 +31,9 @@
                   {{quiz.content}}
                 </td>
                 <td>
-                  {{quiz.type}}
-                </td>
-                <td>
                   {{quiz.level}}
                 </td>
                 <td class="text-right">
-                  <button type="button" class="btn btn-primary" [routerLink]="['/table']">Edit</button>
                   <button type="button" class="btn btn-danger" (click)="delete(quiz.id)">Delete</button>
                 </td>
               </tr>

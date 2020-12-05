@@ -10,15 +10,18 @@ import { QuizService } from "../services/quiz.service";
 export class CreateQuizComponent implements OnInit {
   createQuizForm: FormGroup;
   quizes: any = [];
+  duplicateMess = 'You have this quiz already, make another!';
 
   categoryId: 0;
+  isDuplicate = false;
 
   answer1 =  {
+    content: '',
     _correct: true
   }
-  answer2 =  {_correct: false}
-  answer3 =  {_correct: false}
-  answer4 =  {_correct: false}
+  answer2 =  {content: '', _correct: false}
+  answer3 =  {content: '', _correct: false}
+  answer4 =  {content: '', _correct: false}
 
   quiz = {
     content: "",
@@ -43,7 +46,11 @@ export class CreateQuizComponent implements OnInit {
     this.getAllCategory();
     this.createQuizForm = this.fb.group(
       {
-        content: ['',[Validators.required]]
+        content: ['',[Validators.required]],
+        answer1: ['',[Validators.required]],
+        answer2: ['',[Validators.required]],
+        answer3: ['',[Validators.required]],
+        answer4: ['',[Validators.required]]
       }
     )
   }
@@ -56,6 +63,14 @@ export class CreateQuizComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  checkDuplicate(){
+    for (const x of this.quizes) {
+      if(x.content === this.quiz.content) {
+        this.isDuplicate = true
+      }
+    }
   }
 
   categories: any = [];
@@ -73,7 +88,7 @@ export class CreateQuizComponent implements OnInit {
   }
 
   createNew(): void {
-    debugger
+    this.checkDuplicate();
     this.quiz.answers.push(this.answer1,this.answer2,this.answer3,this.answer4);
     this.service.create(this.quiz).subscribe(
       (response) => {

@@ -14,13 +14,14 @@ import { NotificationsComponent } from "../../pages/notifications/notifications.
 import { UpgradeComponent } from "../../pages/upgrade/upgrade.component";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
-    NgbModule,
+    NgbModule
   ],
   declarations: [
     DashboardComponent,

@@ -3,7 +3,8 @@
     <div class="card">
       <div class="card-header">
         <h4 class="card-title">User management</h4>
-        <div class="alert alert-success" *ngIf="isChangedOk">{{message}}</div>
+        <div class="alert alert-success"
+         *ngIf="isChangedOk">{{message}}</div>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -13,9 +14,6 @@
                 User name
               </th>
               <th>
-                Image
-              </th>
-              <th>
                 Email
               </th>
               <th>
@@ -23,6 +21,9 @@
               </th>
               <th>
                 Address
+              </th>
+              <th>
+                Exam history
               </th>
               <th class="text-right">
                 Set as admin
@@ -34,9 +35,6 @@
                   {{user.username}}
                 </td>
                 <td>
-                  {{user.image}}
-                </td>
-                <td>
                   {{user.email}}
                 </td>
                 <td>
@@ -44,6 +42,9 @@
                 </td>
                 <td>
                   {{user.address}}
+                </td>
+                <td>
+                  <button type="button" class="btn btn-primary" [routerLink]="['/dashboard']">View</button>
                 </td>
                 <td class="text-right">
                   <button type="button" class="btn btn-primary" (click)="changeRole(user.id)"

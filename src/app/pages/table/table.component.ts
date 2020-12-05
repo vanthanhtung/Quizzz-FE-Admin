@@ -11,7 +11,8 @@ declare interface TableData {}
 })
 export class TableComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, public service: UserService) {
+  constructor(private route: ActivatedRoute,
+    public service: UserService) {
 
   }
 
@@ -27,6 +28,7 @@ export class TableComponent implements OnInit {
     this.service.getAll().subscribe(
       (data) => {
         this.users = data;
+        debugger
       },
       (error) => {
         console.log(error);

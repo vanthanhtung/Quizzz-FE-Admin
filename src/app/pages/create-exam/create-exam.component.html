@@ -3,33 +3,50 @@
     <h1>Create Exam</h1>
     <p style="color:red"><i>(*) Please fill in this form to create new exam.</i></p>
 
-    <form class="exam-form">
+    <form class="exam-form" action="action_page.php">
       <div class="card demo-icons">
 
         <div class="input-group mb-3">
           <div class="col-12">Categories</div>
-          <select class="custom-select" [(ngModel)]="exam.category"
-            name="category"
-            id="inputGroupSelect01">
+          <select class="custom-select" [(ngModel)]="exam.category" name="category" id="inputGroupSelect01">
             <option *ngFor="let cate of categories" [value]="cate.name">
               {{ cate.name }}</option>
           </select>
         </div>
 
         <label for="type"><b>Exam name</b></label>
-      <input type="text" placeholder="enter name" name="exam_name" id="exam_name" required [(ngModel)]="exam.exam_name" />
+      <input type="text" placeholder="enter name" name="exam_name" id="exam_name" required [(ngModel)]="exam.exam_name" #name="ngModel"/>
+      <div style="color: red;" *ngIf="name.invalid && (name.dirty || name.touched)">
+      <span *ngIf="name.errors.required">Exam's name is required</span>
+    </div>
+    <div style="color: red;">
+      <span *ngIf="isDuplicate1">{{duplicateMess1}}</span >
+    </div>
       <br>
       <label for="type"><b>Exam code</b></label>
-      <input type="text" placeholder="enter code" name="exam_code" id="exam_code" required [(ngModel)]="exam.exam_code" />
+      <input type="text" placeholder="enter code" name="exam_code" id="exam_code" required [(ngModel)]="exam.exam_code" #code="ngModel" />
+      <div style="color: red;" *ngIf="code.invalid && (code.dirty || code.touched)">
+      <span *ngIf="code.errors.required">Exam's code is required</span>
+    </div>
+    <div style="color: red;">
+      <span *ngIf="isDuplicate2">{{duplicateMess2}}</span >
+    </div>
+
       <br>
-      <label for="type"><b>Duration</b></label>
-      <input type="text" name="duration" id="duration" required [(ngModel)]="exam.duration" />
+      <label for="type"><b>Duration (sec)</b></label>
+      <input type="text" name="duration" id="duration" required [(ngModel)]="exam.duration" #duration="ngModel"/>
+    <div style="color: red;" *ngIf="exam.duration <= 0 || duration.invalid && (duration.dirty || duration.touched)">{{message1}}</div>
+
       <br>
       <label for="type"><b>Number of Quiz</b></label>
-      <input type="text" name="number" id="number" required [(ngModel)]="exam.numberOfQuiz" placeholder="1 ~ 50" />
+      <input type="text" name="number" id="number" required [(ngModel)]="exam.numberOfQuiz" placeholder="1 ~ 50" #numberOfQuiz="ngModel"/>
+      <div style="color: red;" *ngIf="exam.numberOfQuiz <= 0|| exam.numberOfQuiz > 50 || numberOfQuiz.invalid && (numberOfQuiz.dirty || numberOfQuiz.touched)">{{message2}}</div>
+
       <br>
       <label for="type"><b>Total Score</b></label>
-      <input type="text" name="number" id="number" required [(ngModel)]="exam.score"/>
+      <input type="text" name="number" id="number" required [(ngModel)]="exam.score" #score="ngModel"/>
+      <div style="color: red;" *ngIf="exam.score <= 0 || score.invalid && (score.dirty || score.touched)">{{message3}}</div>
+
         <div>
           <br>
           <button type="submit" class="btn btn-primary" (click)="submit()">Submit</button>
