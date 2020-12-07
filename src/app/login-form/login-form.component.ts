@@ -42,7 +42,7 @@ export class LoginFormComponent implements OnInit {
         if(this.roles.includes('ROLE_ADMIN')){
           this.isLoginFailed = false;
           this.isLoggedIn = true;
-          this.router.navigateByUrl('/dashboard')
+          this.router.navigateByUrl('/table')
         }else {
           this.isLoginFailed = true;
           this.errorMessage = 'Unauthorized login';
