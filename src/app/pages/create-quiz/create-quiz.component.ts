@@ -11,10 +11,11 @@ export class CreateQuizComponent implements OnInit {
   createQuizForm: FormGroup;
   quizes: any = [];
   duplicateMess = 'You have this quiz already, make another!';
+  duplicateMess2 = 'Each answer must be different from each other!'
 
   categoryId: 0;
   isDuplicate = false;
-
+  isDuplicate2 = false;
   answer1 =  {
     content: '',
     _correct: true
@@ -25,7 +26,7 @@ export class CreateQuizComponent implements OnInit {
 
   quiz = {
     content: "",
-    type: "",
+    type : 1,
     level: "",
     _active: true,
     category: {
@@ -73,6 +74,19 @@ export class CreateQuizComponent implements OnInit {
     }
   }
 
+  // checkDuplicate2(){
+  //   if(this.answer1.content === this.answer2.content ||
+  //     this.answer1.content === this.answer3.content ||
+  //     this.answer1.content === this.answer4.content ||
+  //     this.answer2.content === this.answer3.content ||
+  //     this.answer2.content === this.answer4.content||
+  //     this.answer3.content === this.answer4.content
+  //     ){
+  //       debugger
+  //     this.isDuplicate2 = true;
+  //   }
+  // }
+
   categories: any = [];
 
   getAllCategory(): void {
@@ -89,8 +103,9 @@ export class CreateQuizComponent implements OnInit {
 
   createNew(): void {
     this.checkDuplicate();
-    this.quiz.answers.push(this.answer1,this.answer2,this.answer3,this.answer4);
-    this.service.create(this.quiz).subscribe(
+    // this.checkDuplicate2();
+      this.quiz.answers.push(this.answer1,this.answer2,this.answer3,this.answer4);
+      this.service.create(this.quiz).subscribe(
       (response) => {
         this.route.navigateByUrl("typography")
         console.log(response);

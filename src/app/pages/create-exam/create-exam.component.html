@@ -33,7 +33,7 @@
     </div>
 
       <br>
-      <label for="type"><b>Duration (sec)</b></label>
+      <label for="type"><b>Duration (minute)</b></label>
       <input type="text" name="duration" id="duration" required [(ngModel)]="exam.duration" #duration="ngModel"/>
     <div style="color: red;" *ngIf="exam.duration <= 0 || duration.invalid && (duration.dirty || duration.touched)">{{message1}}</div>
 
