@@ -1,0 +1,69 @@
+<form action="action_page.php">
+  <div class="container">
+    <h1>Create new Quiz</h1>
+    <p style="color:red"><i>(*) You need have atleast 1 Category before creating Quiz.</i></p>
+
+    <div class="input-group">
+      <div class="">Categories </div>
+      <select style="width: 250px;margin-left: 50px;" [(ngModel)]="quiz.category.id" name="category" id="inputGroupSelect01">
+        <option *ngFor="let cate of categories" [value]="cate.id">{{ cate.name }}</option>
+      </select>
+    </div>
+
+    <br />
+    <div class="row" style="margin-left: 0px;">
+      <label for="content">Content</label>
+    <textarea style="width: 400px; height: 200px; margin-left: 67px;" [(ngModel)]="quiz.content" name="content" id="content" required #content="ngModel">
+    </textarea>
+    <div style="color: red;" *ngIf=" content.invalid && (content.dirty || content.touched)" >
+      <span *ngIf="content.errors.required">Content is required</span >
+    </div>
+    <div style="color: red;">
+      <span *ngIf="isDuplicate">{{duplicateMess}}</span >
+    </div>
+    </div>
+    <br />
+    <div class="input-group" style="margin-left: 6px;">
+      <div class="">Level</div>
+      <select style="width: 250px;margin-left: 81px;" [(ngModel)]="quiz.level" name="level" id="inputGroupSelect01">
+        <option value="EASY">EASY</option>
+        <option value="MEDIUM">MEDIUM</option>
+        <option value="HARD">HARD</option>
+      </select>
+    </div>
+    <br /><br />
+    <div class="row">
+      <label style="margin-left: 22px;">Correct Answer</label>
+    <textarea id="answer1" style="margin-left: 61px;" required name="answer1" placeholder="Enter the correct answer" [(ngModel)]="answer1.content" #answerr1="ngModel" ></textarea>
+    <div style="color: red;" *ngIf=" answerr1.invalid && (answerr1.dirty || answerr1.touched)">
+      <span *ngIf="answerr1.errors.required">Answer is required</span>
+    </div>
+    <div style="color: red;">
+      <span *ngIf="isDuplicate2">{{duplicateMess2}}</span >
+    </div>
+    </div>
+    <br>
+
+    <div class="row">
+      <label style="margin-left: 22px;">Incorrect Answer</label>
+    <textarea id="answer2" style="margin-left: 50px;" required name="answer2" placeholder="Enter the incorrect answer" [(ngModel)]="answer2.content" #answerr2="ngModel" ></textarea>
+    <div style="color: red;" *ngIf=" answerr2.invalid && (answerr2.dirty || answerr2.touched)">
+      <span *ngIf="answerr2.errors.required">Answer is required</span></div>
+      <textarea id="answer3" style="margin-left: 50px;" required name="answer3" placeholder="Enter the incorrect answer" [(ngModel)]="answer3.content" #answerr3="ngModel" ></textarea>
+      <div style="color: red;" *ngIf=" answerr3.invalid && (answerr3.dirty || answerr3.touched)">
+        <span *ngIf="answerr3.errors.required">Answer is required</span>
+      </div>
+      <textarea id="answer4" style="margin-left: 50px;" required name="answer4" placeholder="Enter the incorrect answer" [(ngModel)]="answer4.content" #answerr4="ngModel" ></textarea>
+      <div style="color: red;" *ngIf=" answerr4.invalid && (answerr4.dirty || answerr4.touched)">
+        <span *ngIf="answerr4.errors.required">Answer is required</span>
+      </div>
+    </div>
+    <hr />
+    <td>
+      <button type="button" class="btn btn-primary" (click)="createNew()">
+        Submit
+      </button>
+    </td>
+  </div>
+</form>
+

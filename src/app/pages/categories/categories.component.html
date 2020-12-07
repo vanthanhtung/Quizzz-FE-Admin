@@ -1,0 +1,25 @@
+<h2>Add new category</h2>
+<div class="row">
+    <input class="form-control" type="text" placeholder="New category" class="col-10" required
+        [(ngModel)]="category.name" name="name">
+    <button type="button" class="btn btn-dark; col-2" style="height: 50px;margin: 0" (click)="save()">Add</button>
+</div>
+
+<hr>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let category of categories;let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{category.name}}</td>
+            <td><button type="button" class="btn btn-danger" (click)="deleteCategory(category.id)">Delete</button></td>
+        </tr>
+    </tbody>
+</table>

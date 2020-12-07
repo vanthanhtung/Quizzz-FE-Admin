@@ -12,14 +12,28 @@ import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routing';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-
-
+import { LoginFormComponent } from './login-form/login-form.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { CreateQuizComponent } from './pages/create-quiz/create-quiz.component';
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { CreateExamComponent } from './pages/create-exam/create-exam.component';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { LogoutComponent } from './pages/logout/logout.component'
 @NgModule({
   declarations: [
     AppComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    LoginFormComponent,
+    CreateQuizComponent,
+    CreateExamComponent,
+    LogoutComponent
   ],
   imports: [
+    FormsModule,
+    CommonModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(AppRoutes,{
       useHash: true
@@ -28,9 +42,15 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
     NavbarModule,
     ToastrModule.forRoot(),
     FooterModule,
-    FixedPluginModule
+    FixedPluginModule,
+
+    HttpClientModule,
+    NgbModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule
+
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

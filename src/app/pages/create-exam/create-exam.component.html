@@ -1,0 +1,67 @@
+<div class="row justify-content-md-center">
+  <div class="col-md-5">
+    <h1 style="text-align: center;">Create Exam</h1>
+    <p style="color:red"><i>(*) Please fill in this form to create new exam.</i></p>
+
+    
+      <div class="card demo-icons">
+        <form class="exam-form" action="action_page.php">
+          <div class="form-group">
+            <label for="select">Category</label>
+            <select [(ngModel)]="exam.category" name="category" id="select" class="form-control">
+              <option *ngFor="let cate of categories" [value]="cate.name">
+                {{ cate.name }}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="type"><b>Exam name</b></label>
+            <input class="form-control" type="text" placeholder="enter name" name="exam_name" id="exam_name" required [(ngModel)]="exam.exam_name" #name="ngModel"/>
+            <div style="color: red;" *ngIf="name.invalid && (name.dirty || name.touched)">
+            <span *ngIf="name.errors.required">Exam's name is required</span>
+            </div>
+            <div style="color: red;">
+              <span *ngIf="isDuplicate1">{{duplicateMess1}}</span >
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="type"><b>Exam code</b></label>
+            <input class="form-control" type="text" placeholder="enter code" name="exam_code" id="exam_code" required [(ngModel)]="exam.exam_code" #code="ngModel" />
+            <div style="color: red;" *ngIf="code.invalid && (code.dirty || code.touched)">
+              <span *ngIf="code.errors.required">Exam's code is required</span>
+            </div>
+            <div style="color: red;">
+              <span *ngIf="isDuplicate2">{{duplicateMess2}}</span >
+            </div>
+          </div>
+       
+          <div class="form-group">
+            <label for="type"><b>Duration (minute)</b></label>
+            <input class="form-control" type="text" name="duration" id="duration" required [(ngModel)]="exam.duration" #duration="ngModel"/>
+            <div style="color: red;" *ngIf="exam.duration <= 0 || duration.invalid && (duration.dirty || duration.touched)">{{message1}}</div>
+          </div>
+      
+      
+          <div class="form-group">
+            <label for="type"><b>Number of Quiz</b></label>
+            <input class="form-control" type="text" name="number" id="number" required [(ngModel)]="exam.numberOfQuiz" placeholder="1 ~ 50" #numberOfQuiz="ngModel"/>
+            <div style="color: red;" *ngIf="exam.numberOfQuiz <= 0|| exam.numberOfQuiz > 50 || numberOfQuiz.invalid && (numberOfQuiz.dirty || numberOfQuiz.touched)">{{message2}}</div>
+          </div>
+      
+          <div class="form-group">
+            <label for="type"><b>Total Score</b></label>
+            <input class="form-control" type="text" name="number" id="number" required [(ngModel)]="exam.score" #score="ngModel"/>
+            <div style="color: red;" *ngIf="exam.score <= 0 || score.invalid && (score.dirty || score.touched)">{{message3}}</div>
+          </div>
+
+          <div style="margin-left: 120px;">
+            <button type="submit" class="btn btn-primary" (click)="submit()">Submit</button>
+            <button class="btn btn-danger" (click)="cancel()">Cancel</button>
+          </div>
+
+      </form>
+      </div>
+    
+  </div>
+</div>
