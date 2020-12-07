@@ -7,7 +7,8 @@ import { QuizService } from '../services/quiz.service';
 
 @Component({
   selector: 'app-create-exam',
-  templateUrl: './create-exam.component.html'
+  templateUrl: './create-exam.component.html',
+  styleUrls: ['./create-exam.component.css']
 })
 export class CreateExamComponent implements OnInit {
   createExamForm: FormGroup;

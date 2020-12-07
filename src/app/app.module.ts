@@ -20,14 +20,16 @@ import { CreateQuizComponent } from './pages/create-quiz/create-quiz.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { CreateExamComponent } from './pages/create-exam/create-exam.component';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser'
+import { BrowserModule } from '@angular/platform-browser';
+import { LogoutComponent } from './pages/logout/logout.component'
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     LoginFormComponent,
     CreateQuizComponent,
-    CreateExamComponent
+    CreateExamComponent,
+    LogoutComponent
   ],
   imports: [
     FormsModule,
