@@ -38,6 +38,9 @@
     <div style="color: red;" *ngIf=" answerr1.invalid && (answerr1.dirty || answerr1.touched)">
       <span *ngIf="answerr1.errors.required">Answer is required</span>
     </div>
+    <div style="color: red;">
+      <span *ngIf="isDuplicate2">{{duplicateMess2}}</span >
+    </div>
     </div>
     <br>
 
